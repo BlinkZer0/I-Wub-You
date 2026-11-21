@@ -1,0 +1,174 @@
+{
+ "format": "I Wub You Factory Presets",
+ "version": 1,
+ "note": "preset values = parameter defaults <- template chain (base first) <- preset params. Param ids as in vst/Source/Params.h. The templates srcBass .. srcMix carry each source type's defaults from dsp/Sources.h (the tests check they match), so a preset loads the whole source setup, as picking the type on the SOURCE page does. outGain per preset is set by tests/level-match.ps1 (-18 dBFS on the category's test source).",
+ "templates": {
+  "base": {
+   "params": { "autoIn": 1, "os": 1, "limiter": 1, "mix": 1, "outGain": -6 }
+  },
+  "srcBass": {
+   "base": "base",
+   "params": { "source": 1, "bands": 0, "cutoffLo": 60, "cutoffHi": 2500, "reso": 0.55, "loWob": 1, "midWob": 1, "hiWob": 0,
+               "loDrive": 0.45, "midDrive": 0.45, "hiDrive": 0.3, "xLow": 200, "xHigh": 2500, "filterType": 0, "monoBelow": 100,
+               "transPreserve": 0, "harmOn": 1, "harmAmount": 0.5 }
+  },
+  "srcVocal": {
+   "base": "base",
+   "params": { "source": 2, "bands": 0, "cutoffLo": 200, "cutoffHi": 5000, "reso": 0.45, "loWob": 1, "midWob": 1, "hiWob": 0,
+               "loDrive": 0.15, "midDrive": 0.15, "hiDrive": 0.1, "xLow": 200, "xHigh": 3500, "filterType": 1, "monoBelow": 0,
+               "transPreserve": 0.3, "harmOn": 0, "harmAmount": 0.3 }
+  },
+  "srcGuitar": {
+   "base": "base",
+   "params": { "source": 3, "bands": 0, "cutoffLo": 150, "cutoffHi": 4000, "reso": 0.5, "loWob": 1, "midWob": 1, "hiWob": 0,
+               "loDrive": 0.35, "midDrive": 0.35, "hiDrive": 0.2, "xLow": 250, "xHigh": 3000, "filterType": 0, "monoBelow": 0,
+               "transPreserve": 0.4, "harmOn": 0, "harmAmount": 0.3 }
+  },
+  "srcDrums": {
+   "base": "base",
+   "params": { "source": 4, "bands": 1, "cutoffLo": 100, "cutoffHi": 3000, "reso": 0.4, "loWob": 1, "midWob": 1, "hiWob": 0,
+               "loDrive": 0.2, "midDrive": 0.2, "hiDrive": 0.1, "xLow": 180, "xHigh": 4000, "filterType": 0, "monoBelow": 120,
+               "transPreserve": 0.7, "harmOn": 0, "harmAmount": 0.3 }
+  },
+  "srcPad": {
+   "base": "base",
+   "params": { "source": 5, "bands": 0, "cutoffLo": 100, "cutoffHi": 6000, "reso": 0.6, "loWob": 1, "midWob": 1, "hiWob": 1,
+               "loDrive": 0.1, "midDrive": 0.1, "hiDrive": 0.1, "xLow": 200, "xHigh": 2500, "filterType": 4, "monoBelow": 0,
+               "transPreserve": 0, "harmOn": 0, "harmAmount": 0.3 }
+  },
+  "srcMix": {
+   "base": "base",
+   "params": { "source": 6, "bands": 1, "cutoffLo": 120, "cutoffHi": 3500, "reso": 0.4, "loWob": 1, "midWob": 1, "hiWob": 0,
+               "loDrive": 0.15, "midDrive": 0.15, "hiDrive": 0.05, "xLow": 150, "xHigh": 3000, "filterType": 0, "monoBelow": 120,
+               "transPreserve": 0.5, "harmOn": 0, "harmAmount": 0.3 }
+  }
+ },
+ "categories": [
+  {
+   "name": "Bass",
+   "presets": [
+    { "name": "Classic Wub", "base": "srcBass", "params": { "lfoShape": 0, "lfoDiv": 6, "lfoSmooth": 0.1, "outGain": -9.3 } },
+    { "name": "Growl", "base": "srcBass", "params": { "lfoShape": 1, "lfoDiv": 3, "midDrive": 0.7, "reso": 0.65, "cutoffLo": 90, "cutoffHi": 1800, "drivePos": 1, "outGain": -10.7 } },
+    { "name": "Slow Yoy", "base": "srcBass", "params": { "lfoShape": 1, "lfoDiv": 1, "cutoffLo": 50, "cutoffHi": 3500, "reso": 0.7, "lfoSmooth": 0.2, "outGain": -9.5 } },
+    { "name": "Talking Bass", "base": "srcBass", "params": { "filterType": 4, "lfoShape": 0, "lfoDiv": 3, "reso": 0.5, "midDrive": 0.35, "harmMode": 1, "harmShape": 1, "harmAmount": 0.8, "outGain": 13.7 } },
+    { "name": "Reese Sweep", "base": "srcBass", "params": { "lfoShape": 2, "lfoDiv": 1, "cutoffLo": 80, "cutoffHi": 3000, "reso": 0.6, "midDrive": 0.55, "harmMode": 1, "harmShape": 1, "harmAmount": 0.6, "lfoSmooth": 0.2, "outGain": -8.0 } },
+    { "name": "Sub Thumper", "base": "srcBass", "params": { "subOn": 1, "subAmount": 0.9, "harmOn": 0, "cutoffLo": 50, "cutoffHi": 900, "lfoShape": 0, "lfoDiv": 3, "reso": 0.4, "monoBelow": 150, "outGain": -12.3 } },
+    { "name": "Square Stab", "base": "srcBass", "params": { "lfoShape": 4, "lfoDiv": 6, "lfoSmooth": 0.08, "duck": 0.35, "cutoffLo": 70, "cutoffHi": 2200, "reso": 0.6, "outGain": -7.8 } },
+    { "name": "Triplet Skank", "base": "srcBass", "params": { "lfoShape": 1, "lfoDiv": 8, "cutoffLo": 90, "cutoffHi": 1800, "reso": 0.5, "midDrive": 0.5, "outGain": -8.1 } },
+    { "name": "Key Tracked Wub", "base": "srcBass", "params": { "keyTrack": 1, "cutoffLo": 100, "cutoffHi": 2500, "lfoShape": 0, "lfoDiv": 6, "harmMode": 1, "harmShape": 1, "harmAmount": 0.5, "outGain": -10.0 } },
+    { "name": "Formant Growl", "base": "srcBass", "params": { "filterType": 4, "lfoShape": 1, "lfoDiv": 1, "reso": 0.6, "harmMode": 1, "harmShape": 1, "harmAmount": 0.9, "midDrive": 0.5, "drivePos": 1, "outGain": 10.7 } },
+    { "name": "Sixteenth Chop", "base": "srcBass", "params": { "lfoShape": 4, "lfoDiv": 9, "lfoSmooth": 0.04, "duck": 0.5, "cutoffLo": 60, "cutoffHi": 3000, "outGain": -7.3 } },
+    { "name": "Dub Siren Drop", "base": "srcBass", "params": { "lfoShape": 2, "lfoDiv": 0, "cutoffLo": 40, "cutoffHi": 5000, "reso": 0.7, "lfoSmooth": 0.3, "outGain": -9.6 } },
+    { "name": "Notch Grind", "base": "srcBass", "params": { "filterType": 3, "reso": 0.8, "lfoShape": 0, "lfoDiv": 3, "midDrive": 0.7, "os": 2, "cutoffLo": 150, "cutoffHi": 2500, "outGain": -9.9 } },
+    { "name": "Random Steps", "base": "srcBass", "params": { "lfoShape": 5, "lfoDiv": 6, "lfoSmooth": 0.06, "cutoffLo": 70, "cutoffHi": 2800, "reso": 0.55, "outGain": -7.3 } },
+    { "name": "Half-Time Drag", "base": "srcBass", "params": { "lfoShape": 0, "lfoDiv": 0, "cutoffLo": 55, "cutoffHi": 1500, "reso": 0.5, "lfoSmooth": 0.15, "midDrive": 0.35, "outGain": -8.5 } },
+    { "name": "Clean Pulse", "base": "srcBass", "params": { "mix": 0.6, "midDrive": 0.1, "reso": 0.35, "lfoShape": 0, "lfoDiv": 3, "cutoffLo": 90, "cutoffHi": 2000, "duck": 0.2, "outGain": 0.9 } }
+   ]
+  },
+  {
+   "name": "Vocal",
+   "presets": [
+    { "name": "Vowel Wobble", "base": "srcVocal", "params": { "filterType": 4, "lfoShape": 0, "lfoDiv": 3, "lfoSmooth": 0.25, "outGain": 6.3 } },
+    { "name": "Robot Chop", "base": "srcVocal", "params": { "filterType": 0, "lfoShape": 4, "lfoDiv": 6, "duck": 0.6, "lfoSmooth": 0.05, "cutoffLo": 300, "cutoffHi": 6000, "outGain": -0.7 } },
+    { "name": "Gentle Sweep", "base": "srcVocal", "params": { "filterType": 0, "lfoShape": 0, "lfoDiv": 0, "reso": 0.3, "cutoffLo": 400, "cutoffHi": 8000, "mix": 0.7, "outGain": -1.7 } },
+    { "name": "Stutter 16ths", "base": "srcVocal", "params": { "filterType": 1, "lfoShape": 5, "lfoDiv": 9, "lfoSmooth": 0.03, "reso": 0.55, "outGain": 5.1 } },
+    { "name": "Telephone Wub", "base": "srcVocal", "params": { "filterType": 1, "cutoffLo": 600, "cutoffHi": 2500, "reso": 0.6, "midDrive": 0.4, "lfoShape": 1, "lfoDiv": 3, "outGain": 2.4 } },
+    { "name": "Vocoder Vowels", "base": "srcVocal", "params": { "filterType": 4, "lfoShape": 3, "lfoDiv": 1, "lfoSmooth": 0.2, "reso": 0.6, "outGain": 8.4 } },
+    { "name": "Whisper Gate", "base": "srcVocal", "params": { "filterType": 2, "lfoShape": 4, "lfoDiv": 9, "duck": 0.9, "mix": 0.8, "lfoSmooth": 0.06, "cutoffLo": 300, "cutoffHi": 1200, "outGain": 7.5 } },
+    { "name": "Slow Formant Pad", "base": "srcVocal", "params": { "filterType": 4, "lfoShape": 0, "lfoDiv": 0, "lfoSmooth": 0.4, "mix": 0.7, "outGain": 5.7 } },
+    { "name": "Triplet Tremor", "base": "srcVocal", "params": { "filterType": 1, "lfoShape": 1, "lfoDiv": 5, "reso": 0.5, "cutoffLo": 400, "cutoffHi": 3000, "outGain": 5.9 } },
+    { "name": "Air Wobble", "base": "srcVocal", "params": { "filterType": 2, "cutoffLo": 1500, "cutoffHi": 8000, "reso": 0.4, "lfoShape": 0, "lfoDiv": 3, "mix": 0.8, "outGain": 10.1 } },
+    { "name": "Wide Chorus Wub", "base": "srcVocal", "params": { "filterType": 0, "lfoStereo": 120, "lfoShape": 0, "lfoDiv": 1, "cutoffLo": 500, "cutoffHi": 6000, "reso": 0.3, "mix": 0.6, "outGain": -1.4 } },
+    { "name": "Drill Repeat", "base": "srcVocal", "params": { "filterType": 0, "lfoShape": 4, "lfoDiv": 12, "lfoSmooth": 0.03, "duck": 0.7, "cutoffLo": 400, "cutoffHi": 5000, "outGain": -0.3 } },
+    { "name": "Mid-Side Shimmer", "base": "srcVocal", "params": { "stereoMode": 2, "lfoStereo": 90, "filterType": 1, "reso": 0.5, "lfoShape": 0, "lfoDiv": 3, "cutoffLo": 800, "cutoffHi": 5000, "outGain": 4.0 } },
+    { "name": "Key Tracked Vowel", "base": "srcVocal", "params": { "filterType": 4, "keyTrack": 0.7, "lfoShape": 0, "lfoDiv": 1, "reso": 0.55, "outGain": 5.0 } },
+    { "name": "Grit Wobble", "base": "srcVocal", "params": { "filterType": 0, "midDrive": 0.6, "drivePos": 1, "os": 2, "cutoffLo": 300, "cutoffHi": 4000, "reso": 0.55, "lfoShape": 0, "lfoDiv": 6, "outGain": -10.6 } },
+    { "name": "Random Vowels", "base": "srcVocal", "params": { "filterType": 4, "lfoShape": 5, "lfoDiv": 6, "lfoSmooth": 0.15, "reso": 0.5, "outGain": 7.9 } }
+   ]
+  },
+  {
+   "name": "Guitar",
+   "presets": [
+    { "name": "Wah Wobble", "base": "srcGuitar", "params": { "filterType": 1, "lfoShape": 0, "lfoDiv": 3, "reso": 0.6, "cutoffLo": 300, "cutoffHi": 2500, "outGain": 4.0 } },
+    { "name": "Chug Gate", "base": "srcGuitar", "params": { "lfoShape": 4, "lfoDiv": 6, "duck": 1, "lfoSmooth": 0.04, "midDrive": 0.6, "cutoffLo": 200, "cutoffHi": 5000, "outGain": -6.7 } },
+    { "name": "Dubwise Filter", "base": "srcGuitar", "params": { "lfoShape": 2, "lfoDiv": 0, "reso": 0.55, "cutoffLo": 120, "cutoffHi": 6000, "lfoSmooth": 0.15, "outGain": -7.2 } },
+    { "name": "Notch Phaser", "base": "srcGuitar", "params": { "filterType": 3, "lfoShape": 1, "lfoDiv": 1, "reso": 0.7, "cutoffLo": 200, "cutoffHi": 3000, "lfoStereo": 90, "outGain": -5.5 } },
+    { "name": "Auto-Wah Tracker", "base": "srcGuitar", "params": { "filterType": 1, "keyTrack": 0.5, "lfoShape": 1, "lfoDiv": 6, "reso": 0.65, "cutoffLo": 350, "cutoffHi": 2200, "outGain": 3.4 } },
+    { "name": "Funk Sixteenths", "base": "srcGuitar", "params": { "filterType": 1, "lfoShape": 1, "lfoDiv": 9, "reso": 0.6, "cutoffLo": 300, "cutoffHi": 2500, "midDrive": 0.25, "outGain": 6.0 } },
+    { "name": "Fuzz Wub", "base": "srcGuitar", "params": { "midDrive": 0.85, "os": 2, "drivePos": 0, "filterType": 0, "cutoffLo": 120, "cutoffHi": 3500, "reso": 0.55, "lfoShape": 0, "lfoDiv": 6, "midTone": 0.5, "outGain": -12.1 } },
+    { "name": "Slow Phaser", "base": "srcGuitar", "params": { "filterType": 3, "lfoShape": 1, "lfoDiv": 0, "reso": 0.75, "lfoStereo": 90, "mix": 0.7, "cutoffLo": 300, "cutoffHi": 2500, "outGain": -4.2 } },
+    { "name": "Tremolo Gate", "base": "srcGuitar", "params": { "lfoShape": 4, "lfoDiv": 6, "duck": 1, "lfoSmooth": 0.15, "filterType": 0, "cutoffLo": 3000, "cutoffHi": 8000, "reso": 0.2, "outGain": -2.8 } },
+    { "name": "Three-Band Chug", "base": "srcGuitar", "params": { "bands": 1, "loWob": 1, "midWob": 1, "hiWob": 0, "xLow": 250, "xHigh": 3000, "lfoShape": 4, "lfoDiv": 6, "duck": 0.4, "loDrive": 0.6, "midDrive": 0.5, "lfoSmooth": 0.06, "outGain": -9.2 } },
+    { "name": "Octave Fat", "base": "srcGuitar", "params": { "subOn": 1, "subAmount": 0.7, "filterType": 0, "cutoffLo": 120, "cutoffHi": 4000, "lfoShape": 0, "lfoDiv": 3, "reso": 0.45, "outGain": -10.4 } },
+    { "name": "Random Wah", "base": "srcGuitar", "params": { "filterType": 1, "lfoShape": 6, "lfoDiv": 1, "reso": 0.6, "cutoffLo": 300, "cutoffHi": 2500, "outGain": 4.1 } },
+    { "name": "Bright Sweep", "base": "srcGuitar", "params": { "filterType": 2, "lfoShape": 2, "lfoDiv": 0, "cutoffLo": 200, "cutoffHi": 5000, "reso": 0.4, "lfoSmooth": 0.2, "outGain": -0.8 } },
+    { "name": "Formant Talkbox", "base": "srcGuitar", "params": { "filterType": 4, "lfoShape": 1, "lfoDiv": 3, "reso": 0.6, "midDrive": 0.45, "lfoSmooth": 0.2, "outGain": 5.1 } },
+    { "name": "Dotted Eighth Pulse", "base": "srcGuitar", "params": { "lfoShape": 0, "lfoDiv": 7, "filterType": 0, "cutoffLo": 200, "cutoffHi": 4500, "reso": 0.5, "duck": 0.3, "outGain": -5.5 } },
+    { "name": "Clean Stereo Swirl", "base": "srcGuitar", "params": { "lfoStereo": 180, "lfoShape": 0, "lfoDiv": 1, "midDrive": 0.1, "mix": 0.8, "filterType": 0, "cutoffLo": 400, "cutoffHi": 6000, "reso": 0.35, "outGain": -1.6 } }
+   ]
+  },
+  {
+   "name": "Drums",
+   "presets": [
+    { "name": "Wobbly Breaks", "base": "srcDrums", "params": { "lfoShape": 0, "lfoDiv": 6, "outGain": -5.3 } },
+    { "name": "Pumping Lows", "base": "srcDrums", "params": { "midWob": 0, "lfoShape": 1, "lfoDiv": 3, "cutoffLo": 60, "cutoffHi": 400, "reso": 0.5, "duck": 0.3, "outGain": -0.8 } },
+    { "name": "Crisp Hats Wub", "base": "srcDrums", "params": { "loWob": 0, "lfoShape": 0, "lfoDiv": 6, "cutoffLo": 250, "cutoffHi": 3000, "outGain": -6.8 } },
+    { "name": "Smash & Wub", "base": "srcDrums", "params": { "loDrive": 0.6, "midDrive": 0.6, "hiDrive": 0.3, "lfoShape": 5, "lfoDiv": 6, "reso": 0.45, "os": 2, "outGain": -8.1 } },
+    { "name": "Kick Pump", "base": "srcDrums", "params": { "duck": 0.7, "lfoShape": 4, "lfoDiv": 3, "lfoSmooth": 0.2, "loWob": 0, "midWob": 0, "hiWob": 0, "outGain": -6.1 } },
+    { "name": "Snare Vowel", "base": "srcDrums", "params": { "filterType": 4, "loWob": 0, "midWob": 1, "hiWob": 0, "lfoShape": 5, "lfoDiv": 6, "lfoSmooth": 0.08, "reso": 0.5, "transPreserve": 0.8, "outGain": -6.1 } },
+    { "name": "Hat Shimmer", "base": "srcDrums", "params": { "loWob": 0, "midWob": 0, "hiWob": 1, "filterType": 2, "cutoffLo": 2000, "cutoffHi": 10000, "lfoShape": 1, "lfoDiv": 9, "reso": 0.4, "outGain": -6.8 } },
+    { "name": "Break Phaser", "base": "srcDrums", "params": { "filterType": 3, "loWob": 0, "midWob": 1, "hiWob": 1, "reso": 0.7, "lfoShape": 1, "lfoDiv": 1, "lfoStereo": 90, "transPreserve": 0.5, "outGain": -7.4 } },
+    { "name": "Lo-Fi Crush", "base": "srcDrums", "params": { "loDrive": 0.7, "midDrive": 0.8, "hiDrive": 0.6, "loTone": 0.3, "midTone": 0.3, "hiTone": 0.3, "lfoShape": 0, "lfoDiv": 6, "cutoffLo": 200, "cutoffHi": 4000, "os": 2, "outGain": -7.9 } },
+    { "name": "Triplet Roll", "base": "srcDrums", "params": { "lfoShape": 4, "lfoDiv": 8, "duck": 0.6, "lfoSmooth": 0.05, "loWob": 1, "midWob": 1, "hiWob": 0, "outGain": -6.2 } },
+    { "name": "Sub Boom", "base": "srcDrums", "params": { "subOn": 1, "subAmount": 0.6, "loWob": 1, "midWob": 0, "hiWob": 0, "cutoffLo": 50, "cutoffHi": 300, "lfoShape": 0, "lfoDiv": 3, "reso": 0.45, "transPreserve": 0.9, "outGain": -4.5 } },
+    { "name": "Random Chop", "base": "srcDrums", "params": { "lfoShape": 5, "lfoDiv": 9, "lfoSmooth": 0.04, "duck": 0.5, "loWob": 1, "midWob": 1, "hiWob": 1, "cutoffLo": 150, "cutoffHi": 5000, "outGain": -3.9 } },
+    { "name": "Mid Wobble Only", "base": "srcDrums", "params": { "loWob": 0, "midWob": 1, "hiWob": 0, "filterType": 1, "cutoffLo": 300, "cutoffHi": 2500, "reso": 0.6, "lfoShape": 0, "lfoDiv": 6, "outGain": -6.6 } },
+    { "name": "Half-Time Swell", "base": "srcDrums", "params": { "lfoShape": 3, "lfoDiv": 0, "loWob": 1, "midWob": 1, "hiWob": 1, "cutoffLo": 100, "cutoffHi": 8000, "lfoSmooth": 0.3, "transPreserve": 0.6, "outGain": -6.9 } },
+    { "name": "Mono Thump", "base": "srcDrums", "params": { "stereoMode": 1, "loWob": 1, "midWob": 1, "hiWob": 0, "lfoShape": 1, "lfoDiv": 3, "cutoffLo": 80, "cutoffHi": 2500, "reso": 0.5, "outGain": -3.0 } },
+    { "name": "Breakbeat Talk", "base": "srcDrums", "params": { "filterType": 4, "loWob": 0, "midWob": 1, "hiWob": 1, "lfoShape": 0, "lfoDiv": 3, "lfoSmooth": 0.2, "reso": 0.55, "outGain": -6.8 } }
+   ]
+  },
+  {
+   "name": "Pad",
+   "presets": [
+    { "name": "Ocean", "base": "srcPad", "params": { "filterType": 0, "lfoShape": 0, "lfoDiv": 0, "reso": 0.4, "lfoSmooth": 0.3, "outGain": -1.6 } },
+    { "name": "Random Drift", "base": "srcPad", "params": { "filterType": 0, "lfoShape": 6, "lfoDiv": 1, "reso": 0.5, "lfoStereo": 120, "outGain": -3.4 } },
+    { "name": "Wide Wobble", "base": "srcPad", "params": { "filterType": 0, "lfoShape": 1, "lfoDiv": 3, "lfoStereo": 90, "reso": 0.55, "outGain": -2.8 } },
+    { "name": "Vowel Pad", "base": "srcPad", "params": { "filterType": 4, "lfoShape": 0, "lfoDiv": 0, "lfoSmooth": 0.4, "outGain": 9.9 } },
+    { "name": "Slow Tide", "base": "srcPad", "params": { "filterType": 0, "lfoShape": 1, "lfoDiv": 0, "lfoSmooth": 0.5, "cutoffLo": 150, "cutoffHi": 5000, "reso": 0.45, "outGain": -2.9 } },
+    { "name": "Glass Notch", "base": "srcPad", "params": { "filterType": 3, "lfoShape": 0, "lfoDiv": 1, "reso": 0.8, "lfoStereo": 60, "mix": 0.8, "outGain": -0.9 } },
+    { "name": "Breathing Band", "base": "srcPad", "params": { "filterType": 1, "lfoShape": 0, "lfoDiv": 0, "reso": 0.5, "cutoffLo": 300, "cutoffHi": 3000, "mix": 0.7, "outGain": 5.9 } },
+    { "name": "Choir Vowels", "base": "srcPad", "params": { "filterType": 4, "lfoShape": 6, "lfoDiv": 0, "lfoSmooth": 0.5, "reso": 0.55, "outGain": 10.1 } },
+    { "name": "Pulse Pad", "base": "srcPad", "params": { "filterType": 0, "lfoShape": 4, "lfoDiv": 3, "lfoSmooth": 0.3, "duck": 0.4, "cutoffLo": 200, "cutoffHi": 6000, "reso": 0.4, "outGain": -0.6 } },
+    { "name": "Three-Band Drift", "base": "srcPad", "params": { "bands": 1, "xLow": 300, "xHigh": 3000, "filterType": 0, "lfoShape": 6, "lfoDiv": 1, "loDepth": 0.5, "midDepth": 1, "hiDepth": 0.7, "cutoffLo": 150, "cutoffHi": 8000, "reso": 0.45, "outGain": -2.6 } },
+    { "name": "Shimmer High", "base": "srcPad", "params": { "filterType": 2, "cutoffLo": 800, "cutoffHi": 8000, "lfoShape": 0, "lfoDiv": 1, "lfoStereo": 120, "reso": 0.4, "mix": 0.7, "outGain": 10.1 } },
+    { "name": "Dark Swell", "base": "srcPad", "params": { "filterType": 0, "cutoffLo": 60, "cutoffHi": 1200, "lfoShape": 3, "lfoDiv": 0, "lfoSmooth": 0.4, "reso": 0.5, "outGain": -2.1 } },
+    { "name": "Warm Drive Pad", "base": "srcPad", "params": { "filterType": 0, "midDrive": 0.5, "drivePos": 1, "midTone": 0.4, "cutoffLo": 200, "cutoffHi": 4000, "lfoShape": 0, "lfoDiv": 1, "reso": 0.35, "outGain": -8.9 } },
+    { "name": "Key Tracked Formant", "base": "srcPad", "params": { "filterType": 4, "keyTrack": 1, "lfoShape": 0, "lfoDiv": 0, "lfoSmooth": 0.4, "reso": 0.6, "outGain": 8.1 } },
+    { "name": "Mid-Side Breathe", "base": "srcPad", "params": { "stereoMode": 2, "lfoStereo": 180, "filterType": 0, "cutoffLo": 200, "cutoffHi": 5000, "lfoShape": 0, "lfoDiv": 0, "reso": 0.45, "outGain": -5.2 } },
+    { "name": "Sixteenth Shimmer", "base": "srcPad", "params": { "filterType": 1, "lfoShape": 1, "lfoDiv": 9, "reso": 0.5, "cutoffLo": 500, "cutoffHi": 4000, "lfoSmooth": 0.1, "mix": 0.8, "outGain": 7.8 } }
+   ]
+  },
+  {
+   "name": "Full Mix",
+   "presets": [
+    { "name": "Mix Wub", "base": "srcMix", "params": { "lfoShape": 0, "lfoDiv": 6, "outGain": -5.3 } },
+    { "name": "Fake Sidechain", "base": "srcMix", "params": { "loWob": 0, "midWob": 0, "lfoShape": 4, "lfoDiv": 3, "duck": 0.8, "lfoSmooth": 0.12, "outGain": -6.4 } },
+    { "name": "Lo-Fi Sweep", "base": "srcMix", "params": { "bands": 0, "lfoShape": 2, "lfoDiv": 0, "cutoffLo": 300, "cutoffHi": 12000, "reso": 0.25, "midDrive": 0.3, "outGain": -8.4 } },
+    { "name": "Bar Stutter", "base": "srcMix", "params": { "lfoShape": 5, "lfoDiv": 6, "lfoSmooth": 0.02, "reso": 0.5, "outGain": -6.5 } },
+    { "name": "Quarter Pump", "base": "srcMix", "params": { "duck": 0.6, "lfoShape": 1, "lfoDiv": 3, "loWob": 0, "midWob": 0, "hiWob": 0, "lfoSmooth": 0.15, "outGain": -0.3 } },
+    { "name": "Lows Only Wub", "base": "srcMix", "params": { "loWob": 1, "midWob": 0, "hiWob": 0, "cutoffLo": 60, "cutoffHi": 400, "lfoShape": 0, "lfoDiv": 6, "reso": 0.5, "outGain": -3.1 } },
+    { "name": "Radio Filter", "base": "srcMix", "params": { "bands": 0, "filterType": 1, "cutoffLo": 500, "cutoffHi": 3000, "reso": 0.55, "lfoShape": 2, "lfoDiv": 0, "lfoSmooth": 0.3, "midDrive": 0.4, "outGain": 8.1 } },
+    { "name": "DJ Sweep Up", "base": "srcMix", "params": { "bands": 0, "filterType": 2, "cutoffLo": 80, "cutoffHi": 8000, "lfoShape": 3, "lfoDiv": 0, "lfoSmooth": 0.2, "reso": 0.35, "outGain": 7.6 } },
+    { "name": "Build Riser", "base": "srcMix", "params": { "bands": 0, "filterType": 0, "cutoffLo": 200, "cutoffHi": 12000, "lfoShape": 3, "lfoDiv": 0, "reso": 0.45, "lfoSmooth": 0.2, "outGain": -6.5 } },
+    { "name": "Breakdown Chop", "base": "srcMix", "params": { "lfoShape": 4, "lfoDiv": 9, "duck": 0.8, "lfoSmooth": 0.05, "loWob": 1, "midWob": 1, "hiWob": 1, "cutoffLo": 200, "cutoffHi": 6000, "outGain": -5.6 } },
+    { "name": "Stereo Widen Wub", "base": "srcMix", "params": { "lfoStereo": 180, "loWob": 0, "midWob": 1, "hiWob": 1, "filterType": 0, "cutoffLo": 300, "cutoffHi": 8000, "reso": 0.35, "lfoShape": 0, "lfoDiv": 1, "monoBelow": 150, "outGain": -6.7 } },
+    { "name": "Tape Stop Dip", "base": "srcMix", "params": { "bands": 0, "filterType": 0, "lfoShape": 2, "lfoDiv": 0, "cutoffLo": 60, "cutoffHi": 12000, "lfoSmooth": 0.3, "reso": 0.3, "outGain": -6.9 } },
+    { "name": "Mid Growl", "base": "srcMix", "params": { "loWob": 0, "midWob": 1, "hiWob": 0, "midDrive": 0.5, "filterType": 0, "cutoffLo": 200, "cutoffHi": 2500, "reso": 0.6, "lfoShape": 1, "lfoDiv": 6, "outGain": -6.8 } },
+    { "name": "Random Mix Gate", "base": "srcMix", "params": { "lfoShape": 5, "lfoDiv": 6, "duck": 0.6, "lfoSmooth": 0.08, "loWob": 0, "midWob": 0, "hiWob": 0, "outGain": -3.2 } },
+    { "name": "Formant Mix", "base": "srcMix", "params": { "filterType": 4, "loWob": 0, "midWob": 1, "hiWob": 0, "lfoShape": 0, "lfoDiv": 1, "reso": 0.5, "lfoSmooth": 0.25, "outGain": -6.6 } },
+    { "name": "Subtle Movement", "base": "srcMix", "params": { "loWob": 1, "midWob": 1, "hiWob": 0, "mix": 0.5, "reso": 0.3, "lfoShape": 0, "lfoDiv": 0, "cutoffLo": 200, "cutoffHi": 5000, "lfoSmooth": 0.3, "outGain": -2.4 } }
+   ]
+  }
+ ]
+}
