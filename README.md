@@ -9,7 +9,7 @@ and [The Ham](https://github.com/BlinkZer0/The-Ham), and is built the same way.
 | Build | Where | Status |
 |---|---|---|
 | **VST3 plugin** + Standalone | [`vst/`](vst/README.md) | v1.0: the core chain (input conditioning, 3-band split, drive with oversampling, the LP / BP / HP / notch / formant wobble filter, the LFO with tempo sync and transport lock, resonance limit, stereo modes, mono-below, ducking, dry/wet), pitch tracking with key tracking, the Auto source type, harmonics + sub-octave for thin sources, transient preserve, auto output gain, a true-peak limiter, 96 level-matched presets, the full UI; validated with pluginval and Steinberg's validator; all automated checks pass at 44.1 / 48 / 96 kHz |
-| **Web build** | [`web/index.html`](web/index.html) | one self-contained file: the same UI, a JS twin of the engine checked against the C++ engine (108 parity scenarios), built-in test sources or the microphone / a browser tab / an audio file as input, presets in the browser or a linked folder; tested headless in Edge and Chrome |
+| **Web build** | [`web/index.html`](https://blinkzer0.github.io/I-Wub-You/) | one self-contained file: the same UI, a JS twin of the engine checked against the C++ engine (108 parity scenarios), built-in test sources or the microphone / a browser tab / an audio file as input, presets in the browser or a linked folder; tested headless in Edge and Chrome |
 
 The plan, the phases and the measured results are in [docs/PLAN.md](docs/PLAN.md). The house rules are in
 [docs/CONVENTIONS.md](docs/CONVENTIONS.md).
